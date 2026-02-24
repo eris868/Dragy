@@ -1,0 +1,85 @@
+-- [[ DRAGY HUB: OFFICIAL SOURCE ]]
+-- Theme: Dark Glass / Narrow Vertical
+-- Toggle: Black Circle, Black "D", White Outlines
+
+local Players = game:GetService("Players")
+local CoreGui = game:GetService("CoreGui")
+local UserInputService = game:GetService("UserInputService")
+
+local player = Players.LocalPlayer
+local pgui = player:WaitForChild("PlayerGui")
+
+-- UI Container
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "DragyHub_Official"
+ScreenGui.Parent = pgui
+ScreenGui.ResetOnSpawn = false
+
+-- Main Menu Frame (Narrow Vertical)
+local MainFrame = Instance.new("Frame")
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.Size = UDim2.new(0, 140, 0, 210) 
+MainFrame.Position = UDim2.new(0.5, -70, 0.5, -105)
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.BackgroundTransparency = 0.2
+MainFrame.Active = true
+MainFrame.Draggable = true
+MainFrame.Visible = true
+
+local MainCorner = Instance.new("UICorner", MainFrame)
+MainCorner.CornerRadius = UDim.new(0, 8)
+
+local MainStroke = Instance.new("UIStroke", MainFrame)
+MainStroke.Color = Color3.fromRGB(255, 255, 255)
+MainStroke.Thickness = 1.5
+
+-- Layout and Title
+local Layout = Instance.new("UIListLayout", MainFrame)
+Layout.Padding = UDim.new(0, 6)
+Layout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+Layout.SortOrder = Enum.SortOrder.LayoutOrder
+
+local Title = Instance.new("TextLabel", MainFrame)
+Title.Size = UDim2.new(0.9, 0, 0, 30)
+Title.Text = "DRAGY HUB"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.Font = Enum.Font.GothamBold
+Title.TextSize = 12
+Title.BackgroundTransparency = 1
+Title.LayoutOrder = 1
+
+-- Toggle Button (The Black "D" Circle)
+local ToggleBtn = Instance.new("TextButton")
+ToggleBtn.Name = "Toggle"
+ToggleBtn.Parent = ScreenGui
+ToggleBtn.Size = UDim2.new(0, 45, 0, 45)
+ToggleBtn.Position = UDim2.new(0, 20, 0, 20)
+ToggleBtn.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+ToggleBtn.Text = "D"
+ToggleBtn.TextColor3 = Color3.fromRGB(0, 0, 0) -- Black Text
+ToggleBtn.Font = Enum.Font.GothamBold
+ToggleBtn.TextSize = 25
+ToggleBtn.Active = true
+ToggleBtn.Draggable = true
+
+local ToggleCorner = Instance.new("UICorner", ToggleBtn)
+ToggleCorner.CornerRadius = UDim.new(1, 0)
+
+-- White Border for the Circle
+local ToggleStroke = Instance.new("UIStroke", ToggleBtn)
+ToggleStroke.Color = Color3.fromRGB(255, 255, 255)
+ToggleStroke.Thickness = 2
+
+-- White Outline for the Black "D"
+local TextOutline = Instance.new("UIStroke", ToggleBtn)
+TextOutline.ApplyStrokeMode = Enum.ApplyStrokeMode.Contextual
+TextOutline.Color = Color3.fromRGB(255, 255, 255)
+TextOutline.Thickness = 1.5
+
+-- Functionality
+ToggleBtn.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+print("Dragy Hub Successfully Initialized.")
